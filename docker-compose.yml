@@ -1,0 +1,20 @@
+version: "3"
+services:
+  booked:
+    image: matzeihn/ttbooked
+    ports:
+      - 8009:80
+    volumes:
+      - ./config.php:/var/www/booked/config/config.php
+    networks:
+      - booked
+  ttmysqldb:
+    image: mysql/mysql-server:5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: bookedscheduler
+      MYSQL_ROOT_HOST: '%'
+    networks:
+      - booked
+networks: {booked: {}}

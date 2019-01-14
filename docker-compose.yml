@@ -3,7 +3,7 @@ services:
   booked:
     image: matzeihn/ttbooked
     ports:
-      - 8009:80
+      - ${BOOKED_PORT}:80
     volumes:
       - ./config.php:/var/www/booked/config/config.php
     networks:
